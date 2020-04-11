@@ -1,3 +1,4 @@
+// https://www.gatsbyjs.org/docs/node-apis/
 const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
@@ -208,15 +209,20 @@ exports.createPages = ({ actions, graphql }) => {
     })
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
-    })
-  }
-}
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
+//
+//   if (node.internal.type === `MarkdownRemark`) {
+//     // console.log(`gatsby-node.js : ${JSON.stringify(node, undefined, 4)}`)
+//     //const slug = path.basename(node.fileAbsolutePath, '.md'); // "gatsby" & "react"
+//     // console.log('@@@@@@@@@@@@@', slug)
+//
+//     const value = createFilePath({ node, getNode }); // "/posts/gatsby/" & "/posts/react/"
+//     // console.log('@@@@@@@@@@@@@', value)
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value,  //also "value: slug" if we want to use the name of our markdown file instead
+//     })
+//   }
+// }

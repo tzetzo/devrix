@@ -30,7 +30,7 @@ PageTemplate.propTypes = {
   content: PropTypes.string,
 }
 
-const Page = ({ data }) => {
+const Page = ({ data }) => {  //data is what comes from the graphql query below
   const { wordpressPage: page } = data
 
   return (
@@ -46,6 +46,7 @@ Page.propTypes = {
 
 export default Page
 
+// the result from the following query is auto passed by Gatsby as props to our Page Component
 export const pageQuery = graphql`
   query PageById($id: String!) {
     wordpressPage(id: { eq: $id }) {

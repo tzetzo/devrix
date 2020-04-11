@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Gatsby + WordPress Starter',
+    author: 'Tzvetan Marinov',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -25,7 +26,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     {
       // Removes unused css rules
-      resolve:'gatsby-plugin-purgecss',
+      resolve: 'gatsby-plugin-purgecss',
       options: {
         // Activates purging in gatsby develop
         develop: true,
@@ -34,5 +35,27 @@ module.exports = {
       },
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'src',
+        path: `${__dirname}/src/`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-relative-images',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 750,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    },
   ],
 }

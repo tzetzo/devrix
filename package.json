@@ -14,6 +14,7 @@
     "gatsby-plugin-sass": "^2.1.14",
     "gatsby-plugin-sharp": "^2.2.21",
     "gatsby-remark-images": "^3.1.21",
+    "gatsby-remark-relative-images": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.22",
     "gatsby-source-wordpress": "^3.1.31",
     "gatsby-transformer-remark": "^2.6.22",
@@ -36,12 +37,13 @@
     "start": "npm run develop",
     "clean": "rimraf .cache public",
     "build": "npm run clean && gatsby build",
-    "develop": "npm run clean && gatsby develop",
+    "develop": "npm run clean && env-cmd --file .env.development gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
     "prettier": "^1.18.2",
