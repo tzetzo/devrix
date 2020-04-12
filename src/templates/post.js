@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 
-export const BlogPostTemplate = ({
+export const PostTemplate = ({
   content,
   categories,
   tags,
@@ -17,9 +17,10 @@ export const BlogPostTemplate = ({
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
+            <h1
+              className="title is-size-2 has-text-weight-bold is-bold-light"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
             <div dangerouslySetInnerHTML={{ __html: content }} />
             <div style={{ marginTop: `4rem` }}>
               <p>
@@ -60,46 +61,45 @@ export const BlogPostTemplate = ({
   )
 }
 
-BlogPostTemplate.propTypes = {
+PostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   title: PropTypes.string,
 }
 
-const BlogPost = ({ data }) => {
-  const { wordpressPost: post } = data
+const Post = ({ data: { wordpressPost } }) => {
+  // console.log(
+  //   `wordpressPost call from post.js ${JSON.stringify(wordpressPost, undefined, 4)}`
+  // )
+
+  // const { wordpressPost } = props.data
 
   return (
     <Layout>
-      <Helmet title={`${post.title} | Blog`} />
-      <BlogPostTemplate
-        content={post.content}
-        categories={post.categories}
-        tags={post.tags}
-        title={post.title}
-        date={post.date}
-        author={post.author}
+      <Helmet title={`${wordpressPost.title} | Blog`} />
+      <PostTemplate
+        content={wordpressPost.content}
+        categories={wordpressPost.categories}
+        tags={wordpressPost.tags}
+        title={wordpressPost.title}
+        date={wordpressPost.date}
+        author={wordpressPost.author}
       />
     </Layout>
   )
 }
 
-BlogPost.propTypes = {
+Post.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 }
 
-export default BlogPost
+export default Post
 
-export const pageQuery = graphql`
-  fragment PostFields on wordpress__POST {
-    id
-    slug
-    content
-    date(formatString: "MMMM DD, YYYY")
-    title
-  }
-  query BlogPostByID($id: String!) {
+// the $id is passed to the Template as query variable by Gatsby & the gatsby-node.js createPage context!
+// the result from the following query is auto passed by Gatsby as props to our Component
+export const postQuery = graphql`
+  query PostByID($id: String!) {
     wordpressPost(id: { eq: $id }) {
       id
       title
@@ -121,3 +121,12 @@ export const pageQuery = graphql`
     }
   }
 `
+
+// removed as previously part of the above graphql request
+// fragment PostFields on wordpress__POST {
+//   id
+//   slug
+//   content
+//   date(formatString: "MMMM DD, YYYY")
+//   title
+// }

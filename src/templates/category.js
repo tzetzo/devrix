@@ -5,6 +5,14 @@ import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
 const Category = props => {
+  // console.log(
+  //   `allWordpressPost call from category.js ${JSON.stringify(
+  //     props.data.allWordpressPost,
+  //     undefined,
+  //     4
+  //   )}`
+  // )
+
   const { data, pageContext } = props
   const { edges: posts, totalCount } = data.allWordpressPost
   const { title: siteTitle } = data.site.siteMetadata
@@ -23,7 +31,7 @@ const Category = props => {
 
 export default Category
 
-export const pageQuery = graphql`
+export const categoryQuery = graphql`
   query CategoryPage($slug: String!) {
     site {
       siteMetadata {
@@ -36,7 +44,15 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
-          ...PostListFields
+          id
+          slug
+          title
+          date(formatString: "MMMM DD, YYYY")
+          author{
+            name
+            slug
+          }
+          excerpt
         }
       }
     }

@@ -24,6 +24,8 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `)
     .then(result => {
+      // console.log(`allWordpressPage call from gatsby-node.js ${result}`)
+
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
@@ -41,12 +43,13 @@ exports.createPages = ({ actions, graphql }) => {
           ? getOnlyPublished(allPages)
           : allPages
 
-      // Call `createPage()` once per WordPress page
+      // Call `createPage()` once per WordPress page; pass the ID of the page to the template
       _.each(pages, ({ node: page }) => {
         createPage({
           path: `/${page.slug}/`,
           component: pageTemplate,
           context: {
+            //things we pass down to the Template
             id: page.id,
           },
         })
@@ -68,6 +71,8 @@ exports.createPages = ({ actions, graphql }) => {
       `)
     })
     .then(result => {
+      // console.log(`allWordpressPost call from gatsby-node.js ${result}`);
+
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
@@ -95,7 +100,7 @@ exports.createPages = ({ actions, graphql }) => {
         })
       })
 
-      // Create a paginated blog, e.g., /, /page/2, /page/3
+      //Create a paginated blog, e.g., /, /page/2, /page/3
       paginate({
         createPage,
         items: posts,
@@ -120,6 +125,8 @@ exports.createPages = ({ actions, graphql }) => {
       `)
     })
     .then(result => {
+      // console.log(`allWordpressCategory call from gatsby-node.js ${result}`);
+
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
@@ -139,74 +146,75 @@ exports.createPages = ({ actions, graphql }) => {
         })
       })
     })
-    .then(() => {
-      return graphql(`
-        {
-          allWordpressTag(filter: { count: { gt: 0 } }) {
-            edges {
-              node {
-                id
-                name
-                slug
-              }
+  .then(() => {
+    return graphql(`
+      {
+        allWordpressTag(filter: { count: { gt: 0 } }) {
+          edges {
+            node {
+              id
+              name
+              slug
             }
           }
         }
-      `)
-    })
-
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
       }
+    `)
+  })
+  .then(result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()))
+      return Promise.reject(result.errors)
+    }
 
-      const tagsTemplate = path.resolve(`./src/templates/tag.js`)
+    const tagsTemplate = path.resolve(`./src/templates/tag.js`)
 
-      // Create a Gatsby page for each WordPress tag
-      _.each(result.data.allWordpressTag.edges, ({ node: tag }) => {
-        createPage({
-          path: `/tags/${tag.slug}/`,
-          component: tagsTemplate,
-          context: {
-            name: tag.name,
-            slug: tag.slug,
-          },
-        })
+    // Create a Gatsby page for each WordPress tag
+    _.each(result.data.allWordpressTag.edges, ({ node: tag }) => {
+      createPage({
+        path: `/tags/${tag.slug}/`,
+        component: tagsTemplate,
+        context: {
+          name: tag.name,
+          slug: tag.slug,
+        },
       })
     })
-    .then(() => {
-      return graphql(`
-        {
-          allWordpressWpUsers {
-            edges {
-              node {
-                id
-                slug
-              }
+  })
+  .then(() => {
+    return graphql(`
+      {
+        allWordpressWpUsers {
+          edges {
+            node {
+              id
+              slug
             }
           }
         }
-      `)
-    })
-    .then(result => {
-      if (result.errors) {
-        result.errors.forEach(e => console.error(e.toString()))
-        return Promise.reject(result.errors)
       }
+    `)
+  })
+  .then(result => {
+    // console.log(`allWordpressWpUsers call from gatsby-node.js ${result}`);
 
-      const authorTemplate = path.resolve(`./src/templates/author.js`)
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString()))
+      return Promise.reject(result.errors)
+    }
 
-      _.each(result.data.allWordpressWpUsers.edges, ({ node: author }) => {
-        createPage({
-          path: `/author/${author.slug}`,
-          component: authorTemplate,
-          context: {
-            id: author.id,
-          },
-        })
+    const authorTemplate = path.resolve(`./src/templates/author.js`)
+
+    _.each(result.data.allWordpressWpUsers.edges, ({ node: author }) => {
+      createPage({
+        path: `/author/${author.slug}`,
+        component: authorTemplate,
+        context: {
+          id: author.id,
+        },
       })
     })
+  })
 }
 
 // exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -217,12 +225,12 @@ exports.createPages = ({ actions, graphql }) => {
 //     //const slug = path.basename(node.fileAbsolutePath, '.md'); // "gatsby" & "react"
 //     // console.log('@@@@@@@@@@@@@', slug)
 //
-//     const value = createFilePath({ node, getNode }); // "/posts/gatsby/" & "/posts/react/"
+//     const value = createFilePath({ node, getNode }) // "/posts/gatsby/" & "/posts/react/"
 //     // console.log('@@@@@@@@@@@@@', value)
 //     createNodeField({
 //       name: `slug`,
 //       node,
-//       value,  //also "value: slug" if we want to use the name of our markdown file instead
+//       value, //also "value: slug" if we want to use the name of our markdown file instead
 //     })
 //   }
 // }

@@ -6,6 +6,8 @@ export default class IndexPage extends React.Component {
   render() {
     const { posts, title } = this.props
 
+    // console.log(`data passed to PostList.js ${JSON.stringify(posts, undefined, 4)}`)
+
     return (
       <section className="section">
         <div className="container">
@@ -19,9 +21,11 @@ export default class IndexPage extends React.Component {
               key={post.id}
             >
               <p>
-                <Link className="has-text-primary" to={post.slug}>
-                  {post.title}
-                </Link>
+                <Link
+                  className="has-text-primary"
+                  to={post.slug}
+                  dangerouslySetInnerHTML={{ __html: post.title }}
+                />
                 <span> &bull; </span>
                 <small>
                   {post.date} - posted by{' '}
@@ -53,19 +57,30 @@ IndexPage.propTypes = {
   title: PropTypes.string,
 }
 
-export const pageQuery = graphql`
-  fragment PostListFields on wordpress__POST {
-    id
-    title
-    excerpt
-    author {
-      name
-      slug
-      avatar_urls {
-        wordpress_48
-      }
-    }
-    date(formatString: "MMMM DD, YYYY")
-    slug
-  }
-`
+// export const pageQuery = graphql`
+//   fragment PostListFields on wordpress__POST {
+//     id
+//     title
+//     excerpt
+//     author
+//     date(formatString: "MMMM DD, YYYY")
+//     slug
+//   }
+// `
+
+// export const pageQuery = graphql`
+//   fragment PostListFields on wordpress__POST {
+//     id
+//     title
+//     excerpt
+//     author {
+//       name
+//       slug
+//       avatar_urls {
+//         wordpress_48
+//       }
+//     }
+//     date(formatString: "MMMM DD, YYYY")
+//     slug
+//   }
+// `

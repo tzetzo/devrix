@@ -30,12 +30,18 @@ PageTemplate.propTypes = {
   content: PropTypes.string,
 }
 
-const Page = ({ data }) => {  //data is what comes from the graphql query below
-  const { wordpressPage: page } = data
+const Page = ({data:{wordpressPage}}) => {
+  //data is what comes from the graphql query below
+  // console.log(`wordpressPage call from page.js ${JSON.stringify(wordpressPage, undefined, 4)}`);
+
+  // const { wordpressPage: page } = props.data
 
   return (
     <Layout>
-      <PageTemplate title={page.title} content={page.content} />
+      <PageTemplate
+        title={wordpressPage.title}
+        content={wordpressPage.content}
+      />
     </Layout>
   )
 }
@@ -46,7 +52,8 @@ Page.propTypes = {
 
 export default Page
 
-// the result from the following query is auto passed by Gatsby as props to our Page Component
+// the $id is passed to the Template as query variable by Gatsby & the gatsby-node.js createPage context!
+// the result from the following query is auto passed by Gatsby as props to our Component
 export const pageQuery = graphql`
   query PageById($id: String!) {
     wordpressPage(id: { eq: $id }) {

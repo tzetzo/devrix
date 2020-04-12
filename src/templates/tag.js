@@ -34,7 +34,15 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
-          ...PostListFields
+          id
+          slug
+          title
+          date(formatString: "MMMM DD, YYYY")
+          author{
+            name
+            slug
+          }
+          excerpt
         }
       }
     }

@@ -5,6 +5,14 @@ import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
 const Author = props => {
+  // console.log(
+  //   `wordpressWpUsers call from author.js ${JSON.stringify(
+  //     props.data.wordpressWpUsers,
+  //     undefined,
+  //     4
+  //   )}`
+  // )
+
   const { data } = props
   const { authored_wordpress__POST, name } = data.wordpressWpUsers
   const totalCount =
@@ -38,7 +46,15 @@ export const pageQuery = graphql`
     wordpressWpUsers(id: { eq: $id }) {
       name
       authored_wordpress__POST {
-        ...PostListFields
+        id
+        slug
+        title
+        date(formatString: "MMMM DD, YYYY")
+        author {
+          name
+          slug
+        }
+        excerpt
       }
     }
   }

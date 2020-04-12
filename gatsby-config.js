@@ -10,16 +10,24 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
-        baseUrl: 'wpdemo.gatsbycentral.com',
+        baseUrl: 'tzvetanmarinov.wordpress.com',
         // WP.com sites set to true, WP.org set to false
-        hostingWPCOM: false,
+        hostingWPCOM: true,
         // The protocol. This can be http or https.
         protocol: 'https',
         // Use 'Advanced Custom Fields' Wordpress plugin
-        useACF: false,
-        auth: {},
+        // useACF: true,
+        auth: {
+          wpcom_app_clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
+          wpcom_app_clientId: process.env.WORDPRESS_CLIENT_ID,
+          wpcom_user: process.env.WORDPRESS_USER,
+          wpcom_pass: process.env.WORDPRESS_PASSWORD,
+        },
         // Set to true to debug endpoints on 'gatsby build'
-        verboseOutput: false,
+        // verboseOutput: false,
+        // restApiRoutePrefix: "wp-json",
+        // Set how many pages are retrieved per API request.
+        // perPage: 10,
       },
     },
     'gatsby-plugin-sharp',
