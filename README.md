@@ -2,7 +2,7 @@
 
   This Project uses as a starter [gatsby-starter-wordpress](https://github.com/GatsbyCentral/gatsby-starter-wordpress)
 
-  Description: [gatsby-source-wordpress](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpres) plugin is used as the data connector.
+  Description: [gatsby-source-wordpress](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress) plugin is used as the data connector.
 
   Demo: https://tzvetan.netlify.com/
 
