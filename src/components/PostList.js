@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { Link } from 'gatsby'
 
-export default class IndexPage extends React.Component {
+export default class PostList extends React.Component {
   render() {
     const { posts, title } = this.props
-
-    // console.log(`data passed to PostList.js ${JSON.stringify(posts, undefined, 4)}`)
 
     return (
       <section className="section">
@@ -52,35 +50,7 @@ export default class IndexPage extends React.Component {
   }
 }
 
-IndexPage.propTypes = {
+PostList.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
 }
-
-// export const pageQuery = graphql`
-//   fragment PostListFields on wordpress__POST {
-//     id
-//     title
-//     excerpt
-//     author
-//     date(formatString: "MMMM DD, YYYY")
-//     slug
-//   }
-// `
-
-// export const pageQuery = graphql`
-//   fragment PostListFields on wordpress__POST {
-//     id
-//     title
-//     excerpt
-//     author {
-//       name
-//       slug
-//       avatar_urls {
-//         wordpress_48
-//       }
-//     }
-//     date(formatString: "MMMM DD, YYYY")
-//     slug
-//   }
-// `

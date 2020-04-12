@@ -7,13 +7,6 @@ import Pagination from '../components/Pagination'
 
 export default class Blog extends React.Component {
   render() {
-    // console.log(
-    //   `allWordpressPost call from blog.js ${JSON.stringify(
-    //     this.props.data.allWordpressPost,
-    //     undefined,
-    //     4
-    //   )}`
-    // )
 
     const { data, pageContext } = this.props
     const { edges: posts } = data.allWordpressPost

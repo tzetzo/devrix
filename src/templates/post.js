@@ -67,12 +67,7 @@ PostTemplate.propTypes = {
 }
 
 const Post = ({ data: { wordpressPost } }) => {
-  // console.log(
-  //   `wordpressPost call from post.js ${JSON.stringify(wordpressPost, undefined, 4)}`
-  // )
-
-  // const { wordpressPost } = props.data
-
+  //data is what comes from the graphql query below
   return (
     <Layout>
       <Helmet title={`${wordpressPost.title} | Blog`} />

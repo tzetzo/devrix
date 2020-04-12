@@ -32,10 +32,6 @@ PageTemplate.propTypes = {
 
 const Page = ({data:{wordpressPage}}) => {
   //data is what comes from the graphql query below
-  // console.log(`wordpressPage call from page.js ${JSON.stringify(wordpressPage, undefined, 4)}`);
-
-  // const { wordpressPage: page } = props.data
-
   return (
     <Layout>
       <PageTemplate

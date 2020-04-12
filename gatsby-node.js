@@ -24,8 +24,6 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `)
     .then(result => {
-      // console.log(`allWordpressPage call from gatsby-node.js ${result}`)
-
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
@@ -36,7 +34,6 @@ exports.createPages = ({ actions, graphql }) => {
       // Only publish pages with a `status === 'publish'` in production. This
       // excludes drafts, future posts, etc. They will appear in development,
       // but not in a production build.
-
       const allPages = result.data.allWordpressPage.edges
       const pages =
         process.env.NODE_ENV === 'production'
@@ -71,8 +68,6 @@ exports.createPages = ({ actions, graphql }) => {
       `)
     })
     .then(result => {
-      // console.log(`allWordpressPost call from gatsby-node.js ${result}`);
-
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
@@ -125,8 +120,6 @@ exports.createPages = ({ actions, graphql }) => {
       `)
     })
     .then(result => {
-      // console.log(`allWordpressCategory call from gatsby-node.js ${result}`);
-
       if (result.errors) {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
@@ -196,8 +189,6 @@ exports.createPages = ({ actions, graphql }) => {
     `)
   })
   .then(result => {
-    // console.log(`allWordpressWpUsers call from gatsby-node.js ${result}`);
-
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
@@ -221,12 +212,10 @@ exports.createPages = ({ actions, graphql }) => {
 //   const { createNodeField } = actions
 //
 //   if (node.internal.type === `MarkdownRemark`) {
-//     // console.log(`gatsby-node.js : ${JSON.stringify(node, undefined, 4)}`)
 //     //const slug = path.basename(node.fileAbsolutePath, '.md'); // "gatsby" & "react"
-//     // console.log('@@@@@@@@@@@@@', slug)
 //
 //     const value = createFilePath({ node, getNode }) // "/posts/gatsby/" & "/posts/react/"
-//     // console.log('@@@@@@@@@@@@@', value)
+//
 //     createNodeField({
 //       name: `slug`,
 //       node,

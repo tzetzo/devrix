@@ -5,13 +5,6 @@ import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
 const Category = props => {
-  // console.log(
-  //   `allWordpressPost call from category.js ${JSON.stringify(
-  //     props.data.allWordpressPost,
-  //     undefined,
-  //     4
-  //   )}`
-  // )
 
   const { data, pageContext } = props
   const { edges: posts, totalCount } = data.allWordpressPost

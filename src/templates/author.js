@@ -5,13 +5,6 @@ import Layout from '../components/Layout'
 import PostList from '../components/PostList'
 
 const Author = props => {
-  // console.log(
-  //   `wordpressWpUsers call from author.js ${JSON.stringify(
-  //     props.data.wordpressWpUsers,
-  //     undefined,
-  //     4
-  //   )}`
-  // )
 
   const { data } = props
   const { authored_wordpress__POST, name } = data.wordpressWpUsers
