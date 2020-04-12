@@ -5,7 +5,7 @@
   "author": "GatsbyCentral.com",
   "dependencies": {
     "bulma": "^0.7.5",
-    "gatsby": "^2.18.1",
+    "gatsby": "^2.20.18",
     "gatsby-awesome-pagination": "^0.3.3",
     "gatsby-plugin-lodash": "^3.1.7",
     "gatsby-plugin-netlify": "^2.1.12",
@@ -37,7 +37,7 @@
     "start": "npm run develop",
     "clean": "rimraf .cache public",
     "build": "npm run clean && gatsby build",
-    "develop": "npm run clean && env-cmd --file .env.development gatsby develop",
+    "develop": "npm run clean && env-cmd --file .env gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
