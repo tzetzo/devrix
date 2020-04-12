@@ -29,6 +29,9 @@
     - Make sure at least 1 post has at least 1 tag
   * Ensure the permalink structure in your WordPress installation is set to `Post Name` instead of the default `Plain`, or else the `gatsby-source-wordpress` plugin won't be able to communicate with WordPress
 
+## GraphQL queries
+  * open your browser and load http://localhost:8000/___graphql to construct GraphQL queries
+
 ### Known Limitations
 
 * The above starter is based on the [netlify starter](https://github.com/netlify-templates/gatsby-starter-netlify-cms) which uses [bulma](https://bulma.io). This adds 150KB to every built page.
