@@ -3,7 +3,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.png'
 
-const Navbar = () => {
+const Header = () => {
   const data = useStaticQuery(graphql`
     query {
       allWordpressPage(sort: { fields: wordpress_id }, limit: 5) {
@@ -56,4 +56,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Header
