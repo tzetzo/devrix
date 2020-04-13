@@ -1,15 +1,17 @@
-.container {
-  background-color:orangered;
-  margin: 0 auto;
-  max-width: 75rem;
-  padding: 1rem;
-
-  display: flex;
-  flex-direction: column;
+.layout {
+  background-color: #101d2c;
   min-height: 100vh;
-}
 
-.content {
-  background-color:orange;
-  flex-grow: 1;
+  display: grid;
+  grid-template-rows: 1fr 10vh;
+
+  &__content {
+    display: grid;
+    grid-template-rows: 10vh 1fr;
+  }
+
+  &__children {
+    display: grid;
+    grid-template-rows: auto 5vh;
+  }
 }

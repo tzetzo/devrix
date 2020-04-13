@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.png'
+import styles from './header.module.scss'
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -18,39 +19,37 @@ const Header = () => {
   `)
 
   return (
-    <nav className="navbar is-transparent">
-      <div className="container">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
-            <figure className="image">
-              <img src={logo} alt="Gatsby & WordPress" style={{width: "9rem"}} />
-            </figure>
-          </Link>
-        </div>
-        <div className="navbar-start">
-          {data.allWordpressPage.edges.map(edge => (
-            <Link
-              className="navbar-item"
-              activeClassName="active-navbar-item"
-              to={edge.node.slug}
-              key={edge.node.slug}
-            >
-              {edge.node.title}
-            </Link>
-          ))}
-        </div>
-        <div className="navbar-end">
-          <a
-            className="navbar-item"
-            href="https://github.com/tzetzo/devrix"
-            target="_blank"
-            rel="noopener noreferrer"
+    <nav className={styles.header}>
+      <div className={styles.header__logo}>
+        <Link to="/">
+          <figure>
+            <img src={logo} alt="Gatsby & WordPress" />
+          </figure>
+        </Link>
+      </div>
+      <div className={styles.header__pages}>
+        {data.allWordpressPage.edges.map(edge => (
+          <Link
+            exact
+            className={styles.header__pagesLink}
+            activeClassName={styles.header__pagesActive}
+            to={edge.node.slug}
+            key={edge.node.slug}
           >
-            <span className="icon">
-              <img src={github} alt="Github" />
-            </span>
-          </a>
-        </div>
+            {edge.node.title}
+          </Link>
+        ))}
+      </div>
+      <div className={styles.header__github}>
+        <a
+          href="https://github.com/tzetzo/devrix"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <figure>
+            <img src={github} alt="Github" />
+          </figure>
+        </a>
       </div>
     </nav>
   )

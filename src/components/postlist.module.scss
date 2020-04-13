@@ -1,0 +1,52 @@
+.postlist {
+  background-color: #fff;
+  height: 100%;
+  color: black;
+  padding: 0 6rem;
+  padding-bottom: 6rem;
+
+  display: grid;
+
+  justify-items: center;
+
+  &__heading {
+    height: 9rem;
+    font-size: 1.6rem;
+
+    display: grid;
+    align-items: center;
+  }
+
+  &__list {
+    font-size: 1.3rem;
+
+    display: grid;
+    grid-row-gap: 3rem;
+
+    &--item {
+      background-color: #e6e6e6;
+      padding: 3rem;
+      border: 3px solid #737373;
+
+      display: grid;
+      grid-row-gap: 3rem;
+      justify-items: center;
+
+      a {
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      & > p {
+        display: grid;
+        justify-items: center;
+        grid-row-gap: 1rem;
+      }
+
+      & > div {
+        display: grid;
+        grid-row-gap: 3rem;
+      }
+    }
+  }
+}

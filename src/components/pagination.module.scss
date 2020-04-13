@@ -1,0 +1,16 @@
+.pagination {
+  background-color: orangered;
+  height: 5vh;
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  a {
+    font-size: 1.4rem;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}

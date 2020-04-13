@@ -3,25 +3,13 @@ import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import styles from './page.module.scss'
 
 export const PageTemplate = ({ title, content }) => {
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <div
-                className="content"
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+    <section className={styles.page}>
+      <h2 className={styles.page__heading}>{title}</h2>
+      <div className={styles.page__content} dangerouslySetInnerHTML={{ __html: content }} />
     </section>
   )
 }
@@ -31,7 +19,7 @@ PageTemplate.propTypes = {
   content: PropTypes.string,
 }
 
-const Page = ({ data: { wordpressPage, site }, }) => {
+const Page = ({ data: { wordpressPage, site } }) => {
   //data is what comes from the graphql query below
   return (
     <Layout>

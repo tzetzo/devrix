@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
+import styles from './pagination.module.scss'
 
 const Pagination = ({ pageContext, pathPrefix }) => {
   const { previousPagePath, nextPagePath } = pageContext
@@ -15,17 +16,17 @@ const Pagination = ({ pageContext, pathPrefix }) => {
   `)
 
   return (
-      <nav className="pagination" role="navigation">
-        <div className="navbar navbar-menu">
+      <nav className={styles.pagination} role="navigation">
+        <div className="">
           {previousPagePath && (
-            <div className="navbar-item">
+            <div className="">
               <Link to={previousPagePath} rel="prev">
                 Previous
               </Link>
             </div>
           )}
           {nextPagePath && (
-            <div className="navbar-item">
+            <div className="">
               <Link to={nextPagePath} rel="next">
                 Next
               </Link>

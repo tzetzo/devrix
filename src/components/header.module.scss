@@ -1,3 +1,55 @@
 .header {
-  padding: 1rem 0 3rem;
+  background-color: #101d2c;
+
+  display: grid;
+  grid-template-columns: 15rem 1fr 10rem;
+  justify-items: center;
+  align-items: center;
+
+  &__logo {
+    // background-color: yellow;
+
+    img {
+      max-height: 6rem;
+    }
+  }
+
+  &__pages {
+    // background-color: #101d2c;
+    justify-self: stretch;
+
+
+
+    &-link:link,
+    &-link:visited {
+      font-size: 1.4rem;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    &-link:hover,
+    &-link:active {
+      background-color: rgba(#fff, 0.05);
+      transform: translateY(-3px);
+    }
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  }
+
+  &__github {
+    // background-color: violet;
+
+    img {
+      max-width: 3rem;
+    }
+  }
+}
+
+.header .header__pages-active {
+  color: orangered;
 }

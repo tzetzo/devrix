@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import styles from './post.module.scss'
 
 export const PostTemplate = ({
   content,
@@ -13,50 +14,39 @@ export const PostTemplate = ({
   author,
 }) => {
   return (
-    <section className="section">
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1
-              className="title is-size-2 has-text-weight-bold is-bold-light"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            <div style={{ marginTop: `4rem` }}>
-              <p>
-                {date} - posted by{' '}
-                <Link to={`/author/${author.slug}`}>{author.name}</Link>
-              </p>
-              {categories && categories.length ? (
-                <div>
-                  <h4>Categories</h4>
-                  <ul className="taglist">
-                    {categories.map(category => (
-                      <li key={`${category.slug}cat`}>
-                        <Link to={`/categories/${category.slug}/`}>
-                          {category.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-              {tags && tags.length ? (
-                <div>
-                  <h4>Tags</h4>
-                  <ul className="taglist">
-                    {tags.map(tag => (
-                      <li key={`${tag.slug}tag`}>
-                        <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </div>
-          </div>
+    <section className={styles.post}>
+      <h1 className="" dangerouslySetInnerHTML={{ __html: title }} />
+      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <p>
+        {date} - posted by{' '}
+        <Link to={`/author/${author.slug}`} className={styles.post__link}>{author.name}</Link>
+      </p>
+      {categories && categories.length ? (
+        <div>
+          <h4>Categories</h4>
+          <ul className="">
+            {categories.map(category => (
+              <li key={`${category.slug}cat`}>
+                <Link to={`/categories/${category.slug}/`} className={styles.post__link}>
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      ) : null}
+      {tags && tags.length ? (
+        <div>
+          <h4>Tags</h4>
+          <ul className="">
+            {tags.map(tag => (
+              <li key={`${tag.slug}tag`}>
+                <Link to={`/tags/${tag.slug}/`} className={styles.post__link}>{tag.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </section>
   )
 }

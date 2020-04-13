@@ -7,11 +7,11 @@ import './all.scss'
 import styles from './layout.module.scss'
 
 const Layout = ({ children }) => (
-  <div className={styles.container}>
-    <div className={styles.content}>
+  <div className={styles.layout}>
+    <div className={styles.layout__content}>
       <Helmet title="Gatsby & WordPress" />
       <Header />
-      <div>{children}</div>
+      <div className={styles.layout__children}>{children}</div>
     </div>
     <Footer />
   </div>
