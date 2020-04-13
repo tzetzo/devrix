@@ -15,19 +15,24 @@ export const PostTemplate = ({
 }) => {
   return (
     <section className={styles.post}>
-      <h1 className="" dangerouslySetInnerHTML={{ __html: title }} />
+      <h1 dangerouslySetInnerHTML={{ __html: title }} />
       <div dangerouslySetInnerHTML={{ __html: content }} />
       <p>
         {date} - posted by{' '}
-        <Link to={`/author/${author.slug}`} className={styles.post__link}>{author.name}</Link>
+        <Link to={`/author/${author.slug}`} className={styles.post__link}>
+          {author.name}
+        </Link>
       </p>
       {categories && categories.length ? (
         <div>
           <h4>Categories</h4>
-          <ul className="">
+          <ul>
             {categories.map(category => (
               <li key={`${category.slug}cat`}>
-                <Link to={`/categories/${category.slug}/`} className={styles.post__link}>
+                <Link
+                  to={`/categories/${category.slug}/`}
+                  className={styles.post__link}
+                >
                   {category.name}
                 </Link>
               </li>
@@ -38,10 +43,12 @@ export const PostTemplate = ({
       {tags && tags.length ? (
         <div>
           <h4>Tags</h4>
-          <ul className="">
+          <ul>
             {tags.map(tag => (
               <li key={`${tag.slug}tag`}>
-                <Link to={`/tags/${tag.slug}/`} className={styles.post__link}>{tag.name}</Link>
+                <Link to={`/tags/${tag.slug}/`} className={styles.post__link}>
+                  {tag.name}
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-wordpress",
-  "description": "Gatsby v2 starter for WordPress",
+  "name": "gatsbywordpress",
+  "description": "Gatsby & WordPress",
   "version": "0.1.0",
-  "author": "GatsbyCentral.com",
+  "author": "Tzvetan Marinov",
   "dependencies": {
     "bulma": "^0.7.5",
     "gatsby": "^2.20.18",
@@ -32,7 +32,6 @@
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "main": "n/a",
   "scripts": {
     "start": "npm run develop",

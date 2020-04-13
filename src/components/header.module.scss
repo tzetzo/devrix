@@ -7,18 +7,13 @@
   align-items: center;
 
   &__logo {
-    // background-color: yellow;
-
     img {
       max-height: 6rem;
     }
   }
 
   &__pages {
-    // background-color: #101d2c;
     justify-self: stretch;
-
-
 
     &-link:link,
     &-link:visited {
@@ -42,8 +37,6 @@
   }
 
   &__github {
-    // background-color: violet;
-
     img {
       max-width: 3rem;
     }

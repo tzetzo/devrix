@@ -16,24 +16,18 @@ const Pagination = ({ pageContext, pathPrefix }) => {
   `)
 
   return (
-      <nav className={styles.pagination} role="navigation">
-        <div className="">
-          {previousPagePath && (
-            <div className="">
-              <Link to={previousPagePath} rel="prev">
-                Previous
-              </Link>
-            </div>
-          )}
-          {nextPagePath && (
-            <div className="">
-              <Link to={nextPagePath} rel="next">
-                Next
-              </Link>
-            </div>
-          )}
-        </div>
-      </nav>
+    <nav className={styles.pagination} role="navigation">
+      {previousPagePath && (
+        <Link to={previousPagePath} rel="prev">
+          Previous
+        </Link>
+      )}
+      {nextPagePath && (
+        <Link to={nextPagePath} rel="next">
+          Next
+        </Link>
+      )}
+    </nav>
   )
 }
 

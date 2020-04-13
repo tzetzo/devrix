@@ -16,7 +16,6 @@ export default class PostList extends React.Component {
             <div className={styles.postlist__listItem} key={post.id}>
               <p>
                 <Link
-                  className=""
                   to={post.slug}
                   dangerouslySetInnerHTML={{ __html: post.title }}
                 />
@@ -33,9 +32,7 @@ export default class PostList extends React.Component {
                     __html: post.excerpt.replace(/<p class="link-more.*/, ''),
                   }}
                 />
-                <Link className="" to={post.slug}>
-                  Keep Reading →
-                </Link>
+                <Link to={post.slug}>Keep Reading →</Link>
               </div>
             </div>
           ))}
