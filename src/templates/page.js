@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
@@ -30,10 +31,11 @@ PageTemplate.propTypes = {
   content: PropTypes.string,
 }
 
-const Page = ({data:{wordpressPage}}) => {
+const Page = ({ data: { wordpressPage, site }, }) => {
   //data is what comes from the graphql query below
   return (
     <Layout>
+      <Helmet title={`${wordpressPage.title} | ${site.siteMetadata.title}`} />
       <PageTemplate
         title={wordpressPage.title}
         content={wordpressPage.content}
@@ -52,6 +54,11 @@ export default Page
 // the result from the following query is auto passed by Gatsby as props to our Component
 export const pageQuery = graphql`
   query PageById($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     wordpressPage(id: { eq: $id }) {
       title
       content

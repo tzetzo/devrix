@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import logo from '../img/logo.png'
 
 const Navbar = () => {
   const data = useStaticQuery(graphql`
@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
             <figure className="image">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+              <img src={logo} alt="Gatsby & WordPress" style={{width: "9rem"}} />
             </figure>
           </Link>
         </div>
@@ -31,6 +31,7 @@ const Navbar = () => {
           {data.allWordpressPage.edges.map(edge => (
             <Link
               className="navbar-item"
+              activeClassName="active-navbar-item"
               to={edge.node.slug}
               key={edge.node.slug}
             >
@@ -41,7 +42,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <a
             className="navbar-item"
-            href="https://github.com/GatsbyCentral/gatsby-starter-wordpress"
+            href="https://github.com/tzetzo/devrix"
             target="_blank"
             rel="noopener noreferrer"
           >

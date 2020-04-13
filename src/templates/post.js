@@ -66,11 +66,11 @@ PostTemplate.propTypes = {
   title: PropTypes.string,
 }
 
-const Post = ({ data: { wordpressPost } }) => {
+const Post = ({ data: { wordpressPost, site } }) => {
   //data is what comes from the graphql query below
   return (
     <Layout>
-      <Helmet title={`${wordpressPost.title} | Blog`} />
+      <Helmet title={`${wordpressPost.title} | ${site.siteMetadata.title}`} />
       <PostTemplate
         content={wordpressPost.content}
         categories={wordpressPost.categories}
@@ -95,6 +95,11 @@ export default Post
 // the result from the following query is auto passed by Gatsby as props to our Component
 export const postQuery = graphql`
   query PostByID($id: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     wordpressPost(id: { eq: $id }) {
       id
       title

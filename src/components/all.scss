@@ -47,5 +47,8 @@ $primary-invert: $kaldi-red-invert;
   margin-top: 0 !important;
 }
 
+.active-navbar-item {
+  color: blue;
+}
 
 @import "~bulma"

@@ -7,6 +7,12 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: 'src/img/favicon.png'
+      },
+    },
+    {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
@@ -25,7 +31,7 @@ module.exports = {
         },
         // Set verboseOutput to true to display a verbose output on `npm run develop` or `npm run build`
         // It can help you debug specific API Endpoints problems.
-        verboseOutput: false
+        verboseOutput: false,
       },
     },
     'gatsby-plugin-sharp',

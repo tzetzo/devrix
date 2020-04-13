@@ -6,7 +6,7 @@ import './all.scss'
 
 const TemplateWrapper = ({ children }) => (
   <div>
-    <Helmet title="Home | Gatsby + WordPress" />
+    <Helmet title="Gatsby & WordPress" />
     <Navbar />
     <div>{children}</div>
   </div>
