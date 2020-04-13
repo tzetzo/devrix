@@ -30,7 +30,6 @@ const Header = () => {
       <div className={styles.header__pages}>
         {data.allWordpressPage.edges.map(edge => (
           <Link
-            exact
             className={styles.header__pagesLink}
             activeClassName={styles.header__pagesActive}
             to={edge.node.slug}

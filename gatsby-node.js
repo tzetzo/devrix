@@ -72,7 +72,6 @@ exports.createPages = ({ actions, graphql }) => {
         result.errors.forEach(e => console.error(e.toString()))
         return Promise.reject(result.errors)
       }
-
       const postTemplate = path.resolve(`./src/templates/post.js`)
       const blogTemplate = path.resolve(`./src/templates/blog.js`)
 
@@ -99,7 +98,7 @@ exports.createPages = ({ actions, graphql }) => {
       paginate({
         createPage,
         items: posts,
-        itemsPerPage: 10,
+        itemsPerPage: 3,
         pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `/` : `/page`),
         component: blogTemplate,
       })

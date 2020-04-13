@@ -1,16 +1,25 @@
 .pagination {
   background-color: orangered;
-  height: 5vh;
+  height: 10vh;
+  margin-top: -3rem;
 
   display: grid;
   justify-content: center;
   align-content: center;
+  grid-template-columns: repeat(6,1fr);
 
-  a {
+
+
+  a, div {
     font-size: 1.4rem;
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
+
+    &:first-child {
+      grid-column: 3/4;
+    }
   }
+
 }

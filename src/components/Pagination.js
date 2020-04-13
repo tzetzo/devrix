@@ -22,10 +22,16 @@ const Pagination = ({ pageContext, pathPrefix }) => {
           Previous
         </Link>
       )}
+      {!previousPagePath && (
+        <div style={{ color: '#ff9933', cursor: 'not-allowed' }}>Previous</div>
+      )}
       {nextPagePath && (
         <Link to={nextPagePath} rel="next">
           Next
         </Link>
+      )}
+      {!nextPagePath && (
+        <div style={{ color: '#ff9933', cursor: 'not-allowed' }}>Next</div>
       )}
     </nav>
   )
