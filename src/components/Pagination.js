@@ -15,7 +15,6 @@ const Pagination = ({ pageContext, pathPrefix }) => {
   `)
 
   return (
-    <React.Fragment>
       <nav className="pagination" role="navigation">
         <div className="navbar navbar-menu">
           {previousPagePath && (
@@ -34,8 +33,6 @@ const Pagination = ({ pageContext, pathPrefix }) => {
           )}
         </div>
       </nav>
-      <div style={{display:"flex", justifyContent:"center"}}> Copyright © {data.site.siteMetadata.author}</div>
-    </React.Fragment>
   )
 }
 
