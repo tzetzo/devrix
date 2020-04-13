@@ -8,8 +8,8 @@ import styles from './page.module.scss'
 export const PageTemplate = ({ title, content }) => {
   return (
     <section className={styles.page}>
-      <h2 className={styles.page__heading}>{title}</h2>
-      <div className={styles.page__content} dangerouslySetInnerHTML={{ __html: content }} />
+      <h2>{title}</h2>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </section>
   )
 }

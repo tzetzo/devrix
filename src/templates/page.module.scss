@@ -1,5 +1,7 @@
 .page {
   background-color: #fff;
+  font-size: 1.6rem;
+  color: black;
   height: calc(100% + 10vh);
   padding: 3rem;
 
@@ -7,17 +9,4 @@
   grid-template-rows: 10vh 1fr;
   justify-items: center;
   align-items: center;
-
-  &__heading {
-    // background-color: blue;
-  }
-
-  &__content {
-    // background-color: yellow;
-
-    // & img {
-    //   max-width:20rem;
-    //   height:auto;
-    // }
-  }
 }
